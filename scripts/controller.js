@@ -22,3 +22,7 @@ function init() {
     airconsole.onMessage = function(from, data) {
     }
 }
+
+function btnPressed(row, col){
+  alert(row + ", " + col);
+}
