@@ -24,9 +24,3 @@ function init() {
 
     }
 }
-
-function move(amount) {
-    airconsole.message(AirConsole.SCREEN, {
-        move: amount
-    });
-}
