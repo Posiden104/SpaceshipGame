@@ -5,7 +5,6 @@ var airconsole;
 function init() {
     airconsole = new AirConsole({
         'orientation': 'portrait'
-        
     })
 
     /*
@@ -21,6 +20,5 @@ function init() {
     };
 
     airconsole.onMessage = function(from, data) {
-
     }
 }
