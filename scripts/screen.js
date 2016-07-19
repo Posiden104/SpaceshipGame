@@ -1,19 +1,7 @@
 var airconsole;
 
-var p_height;
-var scrn_player;
-var grav;
-var vspd;
-var hangTime;
-
-var walls = [];
-
 function setupGame() {
-    p_height = 100;
-    scrn_player = document.getElementById("player");
-    grav = 10;
-    vspd = 0;
-    hangTime = 0;
+
 }
 
 function setupConsole() {
