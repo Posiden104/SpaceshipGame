@@ -15,6 +15,7 @@ function setupConsole() {
             var deviceIds = airconsole.getControllerDeviceIds();
             numPlayers = deviceIds.size();
             airconsole.setActivePlayers(numPlayers);
+            playerStates.push(playerState.NOT_READY);
         }
     };
 
@@ -27,6 +28,15 @@ function setupConsole() {
 
         if("ready" == data){
             playerStates[player] = playerState.READY;
+            var ready = true;
+            for(var p in playerStates){
+                if(playerStates[p] != playerState.READY){
+                    ready = false;
+                }
+            }
+            if(ready){
+                STATE = gameState.PLAYING;
+            }
         } else if("get_title" == data){
             airconsole.message(device_id, playerStates[player]);
         }
