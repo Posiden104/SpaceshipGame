@@ -7,12 +7,18 @@
     <title>RUN</title>
 
     <!-- css -->
-    <link rel="stylesheet" type="text/css" href="../included/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../included/css/bootstrap-toggle.min.css">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
 
+    <!-- JQuery -->
+    <script type="text/javascript" src="../included/js/jquery-3.1.0.min.js"></script>
+
     <!--Bootstrap Includes -->
+    <link rel="stylesheet" type="text/css" href="../included/css/bootstrap.min.css">
     <script type="text/javascript" src="../included/js/bootstrap.min.js"></script>
+
+    <!-- Toggle stuff -->
+    <link rel="stylesheet" type="text/css" href="../included/css/titatoggle-dist.css">
+    <link rel="stylesheet" type="text/css" href="../included/css/bootstrap-toggle.min.css">
     <script type="text/javascript" src="../included/js/bootstrap-toggle.min.js"></script>
 
     <!-- javascript -->
@@ -21,45 +27,54 @@
     <script src="../scripts/shared.js"></script>
 </head>
 
-<body onload="init()">
+<body style="background-color: #1c1a1a" onload="init()">
+
     <div style="height: 1%"></div>
 
-    <div id="cool_btn">
-        <input id="toggle-one" type="checkbox" checked data-toggle="toggle" data-size="large">
-        <script>
-            $(function() {
-                $('#toggle-one').bootstrapToggle();
-            });
-        </script>
-    </div>
+    <input type="checkbox" id="ready_button" data-toggle="toggle" data-off="Not Ready" data-on="Ready!" data-offstyle="danger" data-onstyle="success" data-width="100" data-height="70" data-style="slow ios">
 
+    <div id="parag" style="color: #e6e6e6">It's a 2 player game</div>
+
+
+    <!-- Unused code -->
 
     <!--
 
-<div id="r_button">
-<button type="button" class="btn btn-danger">Ready</button>
+
+    <div id="r_button">
+    <button type="button" id="ready_button1" class="btn btn-danger btn-lg btn-block" onclick="readyup()" data-toggle="button" aria-pressed="false" autocomplete="off">Ready</button>
 </div>
 
-    <div id="operations" class="container">
-        <div class="row">
-            <div id="cell0-0" class="outlined col-sm-4" ontouchend="btnPressed(0, 0)" onmouseup="btnPressed(0, 0)">Operation</div>
-            <div id="cell0-1" class="outlined col-sm-4" ontouchend="btnPressed(0, 1)" onmouseup="btnPressed(0, 1)">Operation</div>
-            <div id="cell0-2" class="outlined col-sm-4" ontouchend="btnPressed(0, 2)" onmouseup="btnPressed(0, 2)">Operation</div>
+        <div id="operations" class="container">
+            <div class="row">
+                <div id="cell0-0" class="outlined col-sm-4" ontouchend="btnPressed(0, 0)" onmouseup="btnPressed(0, 0)">Operation</div>
+                <div id="cell0-1" class="outlined col-sm-4" ontouchend="btnPressed(0, 1)" onmouseup="btnPressed(0, 1)">Operation</div>
+                <div id="cell0-2" class="outlined col-sm-4" ontouchend="btnPressed(0, 2)" onmouseup="btnPressed(0, 2)">Operation</div>
+            </div>
+            <div class="row">
+                <div id="cell1-0" class="outlined col-sm-4" ontouchend="btnPressed(1, 0)" onmouseup="btnPressed(1, 0)">Operation</div>
+                <div id="cell1-1" class="outlined col-sm-4" ontouchend="btnPressed(1, 1)" onmouseup="btnPressed(1, 1)">Operation</div>
+                <div id="cell1-2" class="outlined col-sm-4" ontouchend="btnPressed(1, 2)" onmouseup="btnPressed(1, 2)">Operation</div>
+            </div>
+            <div class="row">
+                <div id="cell2-0" class="outlined col-sm-4" ontouchend="btnPressed(2, 0)" onmouseup="btnPressed(2, 0)">Operation</div>
+                <div id="cell2-2" class="outlined col-sm-4" ontouchend="btnPressed(2, 1)" onmouseup="btnPressed(2, 1)">Operation</div>
+                <div id="cell2-1" class="outlined col-sm-4" ontouchend="btnPressed(2, 2)" onmouseup="btnPressed(2, 2)">Operation</div>
+            </div>
         </div>
-        <div class="row">
-            <div id="cell1-0" class="outlined col-sm-4" ontouchend="btnPressed(1, 0)" onmouseup="btnPressed(1, 0)">Operation</div>
-            <div id="cell1-1" class="outlined col-sm-4" ontouchend="btnPressed(1, 1)" onmouseup="btnPressed(1, 1)">Operation</div>
-            <div id="cell1-2" class="outlined col-sm-4" ontouchend="btnPressed(1, 2)" onmouseup="btnPressed(1, 2)">Operation</div>
-        </div>
-        <div class="row">
-            <div id="cell2-0" class="outlined col-sm-4" ontouchend="btnPressed(2, 0)" onmouseup="btnPressed(2, 0)">Operation</div>
-            <div id="cell2-2" class="outlined col-sm-4" ontouchend="btnPressed(2, 1)" onmouseup="btnPressed(2, 1)">Operation</div>
-            <div id="cell2-1" class="outlined col-sm-4" ontouchend="btnPressed(2, 2)" onmouseup="btnPressed(2, 2)">Operation</div>
-        </div>
-    </div>
--->
+    -->
 
-    <div id="parag">It's a 2 player game</div>
+
+    <!-- Latest compiled and minified CSS
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    -->
+    <!-- Optional theme
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    -->
+    <!-- Latest compiled and minified JavaScript
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+     -->
+
 </body>
 
 </html>

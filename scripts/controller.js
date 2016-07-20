@@ -21,7 +21,10 @@ function init() {
 
     airconsole.onMessage = function(from, data) {};
 
-    //$('#toggle-one').bootstrapToggle();
+}
+
+function readyup(){
+    $('#ready_button').toggleClass('btn-danger btn-success').removeClass('btn-block');
 }
 
 function btnPressed(row, col) {

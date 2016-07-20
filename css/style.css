@@ -24,3 +24,27 @@ html, body {
 .outlined {
     border: 2px solid grey;
 }
+.slow .toggle-group {
+    transition: left 0.7s;
+    -webkit-transition: left 0.7s;
+    -moz-transition: left 0.7s;
+    -o-transition: left 0.7s;
+}
+.fast .toggle-group {
+    transition: left 0.1s;
+    -webkit-transition: left 0.1s;
+    -moz-transition: left 0.1s;
+    -o-transition: left 0.1s;
+}
+.quick .toggle-group {
+    transition: none;
+    -webkit-transition: none;
+    -moz-transition: none;
+    -o-transition: none;
+}
+.toggle.ios, .toggle-on.ios, .toggle-off.ios {
+    border-radius: 20px;
+}
+.toggle.ios .toggle-handle {
+    border-radius: 20px;
+}
