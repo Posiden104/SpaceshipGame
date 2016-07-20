@@ -4,9 +4,9 @@ var gameState = {
 };
 var playerState = {
     NOT_READY: 0,
-    READY : 1,
-    CAPTIAN : 2,
-    OFFICER : 3
+    READY: 1,
+    CAPTIAN: 2,
+    OFFICER: 3
 };
 
 var appendTextToElement = function(parent_ele, text) {

@@ -26,18 +26,18 @@ function setupConsole() {
     airconsole.onMessage = function(device_id, data) {
         var player = airconsole.convertDeviceIdToPlayerNumber(device_id);
 
-        if("ready" == data){
+        if ("ready" == data) {
             playerStates[player] = playerState.READY;
             var ready = true;
-            for(var p in playerStates){
-                if(playerStates[p] != playerState.READY){
+            for (var p in playerStates) {
+                if (playerStates[p] != playerState.READY) {
                     ready = false;
                 }
             }
-            if(ready){
+            if (ready) {
                 STATE = gameState.PLAYING;
             }
-        } else if("get_title" == data){
+        } else if ("get_title" == data) {
             airconsole.message(device_id, playerStates[player]);
         }
     };
