@@ -20,6 +20,8 @@ function init() {
     };
 
     airconsole.onMessage = function(from, data) {};
+
+    //$('#toggle-one').bootstrapToggle();
 }
 
 function btnPressed(row, col) {

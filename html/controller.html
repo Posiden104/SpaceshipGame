@@ -5,24 +5,40 @@
 
 <head>
     <title>RUN</title>
-    <!--Bootstrap Includes -->
-    <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
 
     <!-- css -->
-    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
-    </style>
-    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
-    </style>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="../included/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../included/css/bootstrap-toggle.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+
+    <!--Bootstrap Includes -->
+    <script type="text/javascript" src="../included/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../included/js/bootstrap-toggle.min.js"></script>
 
     <!-- javascript -->
-    <script type="text/javascript" src="https://www.airconsole.com/api/airconsole-1.3.0.js"></script>
-    <script src="scripts/controller.js"></script>
-    <script src="scripts/shared.js"></script>
+    <script type="../text/javascript" src="https://www.airconsole.com/api/airconsole-1.3.0.js"></script>
+    <script src="../scripts/controller.js"></script>
+    <script src="../scripts/shared.js"></script>
 </head>
 
 <body onload="init()">
     <div style="height: 1%"></div>
+
+    <div id="cool_btn">
+        <input id="toggle-one" type="checkbox" checked data-toggle="toggle" data-size="large">
+        <script>
+            $(function() {
+                $('#toggle-one').bootstrapToggle();
+            });
+        </script>
+    </div>
+
+
+    <!--
+
+<div id="r_button">
+<button type="button" class="btn btn-danger">Ready</button>
+</div>
 
     <div id="operations" class="container">
         <div class="row">
@@ -41,7 +57,7 @@
             <div id="cell2-1" class="outlined col-sm-4" ontouchend="btnPressed(2, 2)" onmouseup="btnPressed(2, 2)">Operation</div>
         </div>
     </div>
-
+-->
 
     <div id="parag">It's a 2 player game</div>
 </body>
