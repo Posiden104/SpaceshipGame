@@ -25,4 +25,7 @@ function init() {
 
 function btnPressed(row, col){
   alert(row + ", " + col);
+  airconsole.message(AirConsole.SCREEN, {
+        operation: "amount"
+    });
 }
