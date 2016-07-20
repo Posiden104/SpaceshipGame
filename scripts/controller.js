@@ -5,27 +5,26 @@ var airconsole;
 function init() {
     airconsole = new AirConsole({
         'orientation': 'portrait'
-    })
+    });
 
     /*
      * Checks if this device is part of the active game.
      */
     airconsole.onActivePlayersChange = function(player) {
         var div = document.getElementById('parag');
-        if (player != undefined) {
+        if (player !== undefined) {
             div.innerHTML = (['Left Player', 'Right Player'][player]);
         } else {
             div.innerHTML = 'Its a 2 player game!';
         }
     };
 
-    airconsole.onMessage = function(from, data) {
-    }
+    airconsole.onMessage = function(from, data) {};
 }
 
-function btnPressed(row, col){
-  alert(row + ", " + col);
-  airconsole.message(AirConsole.SCREEN, {
+function btnPressed(row, col) {
+    alert(row + ", " + col);
+    airconsole.message(AirConsole.SCREEN, {
         operation: "amount"
     });
 }

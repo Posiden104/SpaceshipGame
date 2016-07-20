@@ -1,5 +1,4 @@
-html,
-body {
+html, body {
     height: 100%;
     margin: 0;
     font-family: sans-serif;
@@ -7,7 +6,6 @@ body {
     text-align: center;
     background-color: black;
 }
-
 .button {
     display: inline-block;
     height: 30%;
@@ -16,7 +14,6 @@ body {
     background-color: #222;
     position: relative;
 }
-
 .button_label {
     position: absolute;
     left: 0;
@@ -24,7 +21,6 @@ body {
     top: 50%;
     margin-top: -6px;
 }
-
 .outlined {
-  border: 2px solid grey;
+    border: 2px solid grey;
 }
