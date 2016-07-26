@@ -2,9 +2,13 @@ var airconsole;
 var STATE = gameState.READY_UP;
 var numPlayers = 0;
 var playerStates;
+var $messageBox;
 
 function setupGame() {
-
+    if(jQuery){
+        $messageBox = $("#messageBox");
+    } else {
+    }
 }
 
 function setupConsole() {
@@ -16,17 +20,21 @@ function setupConsole() {
             numPlayers = deviceIds.size();
             airconsole.setActivePlayers(numPlayers);
             playerStates.push(playerState.NOT_READY);
+            $messageBox.text(numPlayers);
         }
     };
 
     airconsole.onDisconnect = function(device_id) {
-
+        var deviceIds = airconsole.getControllerDeviceIds();
+        numPlayers = deviceIds.size();
+        airconsole.setActivePlayers(numPlayers);
+        playerStates.push(playerState.NOT_READY);
     };
 
     airconsole.onMessage = function(device_id, data) {
         var player = airconsole.convertDeviceIdToPlayerNumber(device_id);
 
-        if ("ready" == data) {
+        if ("ready" == data.ready) {
             playerStates[player] = playerState.READY;
             var ready = true;
             for (var p in playerStates) {
@@ -37,6 +45,9 @@ function setupConsole() {
             if (ready) {
                 STATE = gameState.PLAYING;
             }
+
+            appendTextToElement($messageBox, "player " + player + " is ready!");
+
         } else if ("get_title" == data) {
             airconsole.message(device_id, playerStates[player]);
         }
@@ -48,11 +59,8 @@ function loop() {
     requestAnimationFrame(loop);
 }
 
-/**
- * body.onload function.
- */
-function init() {
+$( document ).ready(function() {
     setupConsole();
     setupGame();
-    requestAnimationFrame(loop);
-}
+    //requestAnimationFrame(loop);
+});

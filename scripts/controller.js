@@ -24,7 +24,7 @@ function init() {
 }
 
 function readyup(){
-    $('#ready_button').toggleClass('btn-danger btn-success').removeClass('btn-block');
+    airConsole.message(AirConsole.SCREEN, {ready: "ready"});
 }
 
 function btnPressed(row, col) {
