@@ -1,14 +1,10 @@
 var airconsole;
 var STATE = gameState.READY_UP;
 var numPlayers = 0;
-var playerStates;
-var $messageBox;
+var messageBox;
 
 function setupGame() {
-    if(jQuery){
-        $messageBox = $("#messageBox");
-    } else {
-    }
+    messageBox = document.getElementById("messageBox");
 }
 
 function setupConsole() {
@@ -17,10 +13,11 @@ function setupConsole() {
     airconsole.onConnect = function(device_id) {
         if (STATE == gameState.READY_UP) {
             var deviceIds = airconsole.getControllerDeviceIds();
-            numPlayers = deviceIds.size();
+            numPlayers = deviceIds.length;
             airconsole.setActivePlayers(numPlayers);
-            playerStates.push(playerState.NOT_READY);
-            $messageBox.text(numPlayers);
+            appendTextToElement(messageBox, "Players connected: " + numPlayers);
+        } else {
+            // game is in running mode
         }
     };
 
@@ -31,26 +28,35 @@ function setupConsole() {
         playerStates.push(playerState.NOT_READY);
     };
 
-    airconsole.onMessage = function(device_id, data) {
-        var player = airconsole.convertDeviceIdToPlayerNumber(device_id);
-
-        if ("ready" == data.ready) {
-            playerStates[player] = playerState.READY;
-            var ready = true;
-            for (var p in playerStates) {
-                if (playerStates[p] != playerState.READY) {
-                    ready = false;
+    airconsole.onCustomDeviceStateChange = function(device_id, custom_data) {
+        var deviceIds = airconsole.getActivePlayerDeviceIds();
+        messageBox.innerHTML = "";
+        //appendTextToElement(messageBox, "Player state change: " + airconsole.convertDeviceIdToPlayerNumber(device_id) + ": " + custom_data.ready);
+        if (STATE == gameState.READY_UP) {
+            var flag = true;
+            for (var id in deviceIds) {
+                if (!airconsole.getCustomDeviceState(deviceIds[id]).ready) {
+                    var notReady = "Player " + airconsole.convertDeviceIdToPlayerNumber(deviceIds[id]) + " is not ready";
+                    appendTextToElement(messageBox, notReady);
+                    flag = false;
+                    break;
+                } else {
+                    var Ready = "Player " + airconsole.convertDeviceIdToPlayerNumber(deviceIds[id]) + " is ready";
+                    appendTextToElement(messageBox, Ready);
                 }
             }
-            if (ready) {
+
+            if (flag) {
                 STATE = gameState.PLAYING;
+                messageBox.innerHTML = "";
+                appendTextToElement(messageBox, "Playing!");
             }
-
-            appendTextToElement($messageBox, "player " + player + " is ready!");
-
-        } else if ("get_title" == data) {
-            airconsole.message(device_id, playerStates[player]);
         }
+    };
+
+    airconsole.onMessage = function(device_id, data) {
+        appendTextToElement(messageBox, "message received");
+        var player = airconsole.convertDeviceIdToPlayerNumber(device_id);
     };
 }
 
@@ -59,7 +65,7 @@ function loop() {
     requestAnimationFrame(loop);
 }
 
-$( document ).ready(function() {
+$(document).ready(function() {
     setupConsole();
     setupGame();
     //requestAnimationFrame(loop);
