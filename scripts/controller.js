@@ -31,6 +31,15 @@ function init() {
 
     airconsole.onMessage = function(from, data) {
         appendTextToElement(parag, "message received from " + from);
+        if(data !== null){
+            if(data.role == "officer"){
+                parag.innerHTML = "";
+                appendTextToElement(parag, "I was assigned an officer");
+            } else if(data.role == "captian"){
+                    parag.innerHTML = "";
+                    appendTextToElement(parag, "I was assigned a captian");
+            }
+        }
     };
 
     $('#readyButton').change(function() {

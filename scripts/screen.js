@@ -1,10 +1,10 @@
-var airconsole;
 var STATE = gameState.READY_UP;
 var numPlayers = 0;
 var messageBox;
 
 function setupGame() {
-    messageBox = document.getElementById("messageBox");
+    airconsole.broadcast("Game ready");
+    pickRoles(numPlayers);
 }
 
 function setupConsole() {
@@ -50,6 +50,7 @@ function setupConsole() {
                 STATE = gameState.PLAYING;
                 messageBox.innerHTML = "";
                 appendTextToElement(messageBox, "Playing!");
+                setupGame();
             }
         }
     };
@@ -66,7 +67,7 @@ function loop() {
 }
 
 $(document).ready(function() {
+    messageBox = document.getElementById("messageBox");
     setupConsole();
-    setupGame();
     //requestAnimationFrame(loop);
 });
